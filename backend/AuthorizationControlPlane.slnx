@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Authorization.Ai/Authorization.Ai.csproj" />
+    <Project Path="src/Authorization.Api/Authorization.Api.csproj" />
+    <Project Path="src/Authorization.Infrastructure/Authorization.Infrastructure.csproj" />
+    <Project Path="src/Authorization.Sdk/Authorization.Sdk.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Authorization.Api.Tests/Authorization.Api.Tests.csproj" />
+    <Project Path="tests/Authorization.ContractTests/Authorization.ContractTests.csproj" />
+    <Project Path="tests/Authorization.Infrastructure.Tests/Authorization.Infrastructure.Tests.csproj" />
+    <Project Path="tests/Authorization.Sdk.Tests/Authorization.Sdk.Tests.csproj" />
+  </Folder>
+</Solution>

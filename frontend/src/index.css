@@ -1,0 +1,269 @@
+/* ============================================================================
+   Design tokens — neutral-first surfaces with a green signature accent.
+   Light is the default; dark is applied via [data-theme="dark"] on <html>.
+   Existing variable names are preserved so the wider stylesheet inherits the
+   refreshed palette automatically; new scale tokens are additive.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Typography families */
+  --sans: "Aptos", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --heading: "Aptos Display", "Segoe UI", system-ui, sans-serif;
+  --mono: "Cascadia Code", "SF Mono", Consolas, monospace;
+
+  /* Type scale */
+  --fs-display: 30px;
+  --fs-h1: 26px;
+  --fs-h2: 18px;
+  --fs-h3: 15px;
+  --fs-body: 14px;
+  --fs-sm: 13px;
+  --fs-xs: 12px;
+  --lh-tight: 1.2;
+  --lh-normal: 1.5;
+
+  /* Spacing scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Neutral surfaces & text (light)
+     A cool, low-chroma gray canvas lets white cards read as elevated, while a
+     stepped surface ladder + slightly firmer borders give panels, tables and
+     inputs clear separation without visual noise. */
+  --bg: #eaedf2;
+  --surface: #ffffff;
+  --surface-2: #f4f6f9;
+  --surface-3: #e8ecf1;
+  --surface-inset: #eef1f5;
+  --text-h: #14181c;
+  --text: #3b434c;
+  --muted: #656e78;
+  --border: #dce1e8;
+  --border-strong: #c5cdd7;
+
+  /* Green signature accent */
+  --accent: #1f6f5c;
+  --accent-strong: #17563f;
+  --accent-soft: rgba(31, 111, 92, 0.1);
+  --accent-text: #1f6f5c; /* accent used as foreground (links, active) */
+  --on-accent: #ffffff;
+
+  /* Semantic */
+  --danger: #d64545;
+  --danger-strong: #b3382f;
+  --danger-soft: rgba(214, 69, 69, 0.12);
+  --success: #1f8a4c;
+  --success-soft: rgba(31, 138, 76, 0.12);
+  --warning: #b7791f;
+  --warning-soft: rgba(183, 121, 31, 0.14);
+  --info: #2563a8;
+  --info-soft: rgba(37, 99, 168, 0.12);
+
+  /* Risk scale */
+  --risk-low: #1f8a4c;
+  --risk-medium: #b7791f;
+  --risk-high: #d9691f;
+  --risk-critical: #c0392b;
+
+  /* Elevation — soft and low */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 32, 0.05);
+  --shadow-sm:
+    0 1px 3px rgba(16, 24, 32, 0.06), 0 1px 2px rgba(16, 24, 32, 0.04);
+  --shadow-md: 0 4px 14px rgba(16, 24, 32, 0.08);
+  --shadow: 0 6px 22px rgba(16, 24, 32, 0.07);
+  --shadow-pop: 0 16px 48px rgba(16, 24, 32, 0.16);
+
+  /* Focus */
+  --focus-ring: rgba(31, 111, 92, 0.32);
+  --focus: 0 0 0 3px var(--focus-ring);
+
+  /* Scrollbar (light) */
+  --scrollbar-thumb: rgba(16, 24, 32, 0.22);
+  --scrollbar-thumb-hover: rgba(16, 24, 32, 0.4);
+
+  /* Motion */
+  --dur-fast: 120ms;
+  --dur: 180ms;
+  --dur-slow: 240ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Z-index scale */
+  --z-sticky: 10;
+  --z-dropdown: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+  --z-palette: 70;
+
+  font: var(--fs-body) / var(--lh-normal) var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0e1113;
+  --surface: #16191c;
+  --surface-2: #1b1f22;
+  --surface-3: #23282c;
+  --surface-inset: #12161a;
+  --text-h: #eef1f3;
+  --text: #c2c9cf;
+  --muted: #8a939b;
+  --border: #292f34;
+  --border-strong: #3a4147;
+
+  --accent: #22836b;
+  --accent-strong: #2c8a6e;
+  --accent-soft: rgba(76, 196, 160, 0.16);
+  --accent-text: #4cc4a0;
+  --on-accent: #ffffff;
+
+  --danger: #e05757;
+  --danger-strong: #c4463f;
+  --danger-soft: rgba(224, 87, 87, 0.18);
+  --success: #35a869;
+  --success-soft: rgba(53, 168, 105, 0.18);
+  --warning: #d59a3a;
+  --warning-soft: rgba(213, 154, 58, 0.18);
+  --info: #4d94e0;
+  --info-soft: rgba(77, 148, 224, 0.18);
+
+  --risk-low: #35a869;
+  --risk-medium: #d59a3a;
+  --risk-high: #e78a45;
+  --risk-critical: #e05757;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
+  --shadow-pop: 0 20px 56px rgba(0, 0, 0, 0.62);
+
+  --focus-ring: rgba(76, 196, 160, 0.4);
+
+  /* Scrollbar (dark) */
+  --scrollbar-thumb: rgba(238, 241, 243, 0.18);
+  --scrollbar-thumb-hover: rgba(238, 241, 243, 0.36);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+}
+
+h2 {
+  margin: 0;
+  font-size: var(--fs-h2);
+  line-height: 1.3;
+}
+
+h3 {
+  margin: 0;
+  font-size: var(--fs-h3);
+  line-height: 1.3;
+}
+
+p {
+  margin: 0;
+}
+
+code {
+  font-family: var(--mono);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text-h);
+}
+
+/* ============================================================================
+   Scrollbars — theme-aware, subtle floating pill thumb over a transparent
+   track. Firefox uses the standard `scrollbar-*` properties; Chromium/WebKit
+   use the `::-webkit-scrollbar` pseudo-elements. The 3px transparent border +
+   padding-box clip make the thumb read as an inset rounded pill.
+   ========================================================================== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-pill);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  transition: background-color var(--dur) var(--ease-standard);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

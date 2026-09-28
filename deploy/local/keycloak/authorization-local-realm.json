@@ -1,0 +1,378 @@
+{
+  "realm": "authorization-local",
+  "enabled": true,
+  "displayName": "Authorization Local",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": false,
+  "roles": {
+    "realm": [
+      { "name": "PlatformSuperAdmin", "description": "Full local platform administration" },
+      { "name": "PlatformReadOnlyViewer", "description": "Platform-wide read-only viewer" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "authorization-portal",
+      "name": "Authorization Portal",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["http://localhost:5173/*"],
+      "webOrigins": ["http://localhost:5173"],
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "protocolMappers": [
+        {
+          "name": "authorization-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "authorization-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "intelligence-authoring-runtime-client",
+      "name": "Intelligence Authoring Runtime Client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "intelligence_authoring_dev_secret",
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "attributes": {
+        "applicationId": "intelligence-authoring"
+      },
+      "protocolMappers": [
+        {
+          "name": "authorization-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "authorization-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "pricing-management-runtime-client",
+      "name": "Pricing Management Runtime Client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "pricing_management_dev_secret",
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "attributes": {
+        "applicationId": "pricing-management"
+      },
+      "protocolMappers": [
+        {
+          "name": "authorization-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "authorization-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "market-reference-runtime-client",
+      "name": "Market Reference Runtime Client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "market_reference_dev_secret",
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "attributes": {
+        "applicationId": "market-reference"
+      },
+      "protocolMappers": [
+        {
+          "name": "authorization-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "authorization-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "lng-edge-runtime-client",
+      "name": "LNG Edge Runtime Client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "lng_edge_dev_secret",
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "attributes": {
+        "applicationId": "lng-edge"
+      },
+      "protocolMappers": [
+        {
+          "name": "authorization-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "authorization-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "pricing-management-user-client",
+      "name": "Pricing Management User Client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "pricing_management_user_dev_secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "applicationId": "pricing-management"
+      },
+      "protocolMappers": [
+        {
+          "name": "authorization-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "authorization-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "user7.lead@icis.com",
+      "email": "user7.lead@icis.com",
+      "firstName": "Pricing",
+      "lastName": "Lead",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "pricing_lead_dev_password", "temporary": false }]
+    },
+    {
+      "username": "admin@local.test",
+      "email": "admin@local.test",
+      "firstName": "Platform",
+      "lastName": "Admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "realmRoles": ["PlatformSuperAdmin"]
+    },
+    {
+      "username": "platform-viewer@local.test",
+      "email": "platform-viewer@local.test",
+      "firstName": "Platform",
+      "lastName": "Viewer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "realmRoles": ["PlatformReadOnlyViewer"]
+    },
+    {
+      "username": "intelligence-authoring-admin@local.test",
+      "email": "intelligence-authoring-admin@local.test",
+      "firstName": "Intelligence Authoring",
+      "lastName": "Admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "attributes": {
+        "acp_app_role": ["intelligence-authoring:ApplicationAdmin"]
+      }
+    },
+    {
+      "username": "intelligence-authoring-viewer@local.test",
+      "email": "intelligence-authoring-viewer@local.test",
+      "firstName": "Intelligence Authoring",
+      "lastName": "Viewer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "attributes": {
+        "acp_app_role": ["intelligence-authoring:ReadOnlyViewer"]
+      }
+    },
+    {
+      "username": "pricing-management-admin@local.test",
+      "email": "pricing-management-admin@local.test",
+      "firstName": "Pricing Management",
+      "lastName": "Admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "attributes": {
+        "acp_app_role": ["pricing-management:ApplicationAdmin"]
+      }
+    },
+    {
+      "username": "pricing-management-viewer@local.test",
+      "email": "pricing-management-viewer@local.test",
+      "firstName": "Pricing Management",
+      "lastName": "Viewer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "attributes": {
+        "acp_app_role": ["pricing-management:ReadOnlyViewer"]
+      }
+    },
+    {
+      "username": "market-reference-admin@local.test",
+      "email": "market-reference-admin@local.test",
+      "firstName": "Market Reference",
+      "lastName": "Admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "attributes": {
+        "acp_app_role": ["market-reference:ApplicationAdmin"]
+      }
+    },
+    {
+      "username": "market-reference-viewer@local.test",
+      "email": "market-reference-viewer@local.test",
+      "firstName": "Market Reference",
+      "lastName": "Viewer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "attributes": {
+        "acp_app_role": ["market-reference:ReadOnlyViewer"]
+      }
+    },
+    {
+      "username": "lng-edge-admin@local.test",
+      "email": "lng-edge-admin@local.test",
+      "firstName": "LNG Edge",
+      "lastName": "Admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "attributes": {
+        "acp_app_role": ["lng-edge:ApplicationAdmin"]
+      }
+    },
+    {
+      "username": "lng-edge-viewer@local.test",
+      "email": "lng-edge-viewer@local.test",
+      "firstName": "LNG Edge",
+      "lastName": "Viewer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin_dev_password", "temporary": false }],
+      "attributes": {
+        "acp_app_role": ["lng-edge:ReadOnlyViewer"]
+      }
+    }
+  ],
+  "clientScopes": [
+    {
+      "name": "acp-application-roles",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "false"
+      },
+      "protocolMappers": [
+        {
+          "name": "acp_app_role",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "acp_app_role",
+            "claim.name": "acp_app_role",
+            "jsonType.label": "String",
+            "multivalued": "true",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "acp_platform_role",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "acp_platform_role",
+            "jsonType.label": "String",
+            "multivalued": "true",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "email",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-property-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "email",
+            "claim.name": "email",
+            "jsonType.label": "String",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "preferred_username",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-property-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "username",
+            "claim.name": "preferred_username",
+            "jsonType.label": "String",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "defaultDefaultClientScopes": ["acp-application-roles"],
+  "defaultOptionalClientScopes": []
+}

@@ -1,0 +1,30 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+
+# .NET
+project.lock.json
+artifacts/
+
+# Node / frontend (see frontend/.gitignore for scoped rules)
+node_modules/
+dist/
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.vs/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and captured tool/build output (do not commit)
+*.log
+*_errors.txt
+*_test_errors.txt
